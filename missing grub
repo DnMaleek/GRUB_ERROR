@@ -1,0 +1,24 @@
+DUAL OS SYSTEM GRUB SOLVING ERROR
+
+1. Identify the Correct Partition
+At the grub rescue> prompt, list available partitions:
+grub rescue>ls
+You will see output like (hd0), (hd0,msdos1), (hd0,msdos2), etc.
+
+Check each partition to find your OS:
+grub rescue>ls (hd0,msdos1)/
+grub rescue>ls (hd0,msdos2)/
+Repeat for all partitions. Look for familiar directories like /boot/grub or /etc.
+
+2. Set the Correct Root and Prefix
+Once you find the correct partition, set it manually:
+
+set root=(hd0,msdosX)   # Replace X with the correct partition number
+set prefix=(hd0,msdosX)/boot/grub
+insmod normal
+normal
+This should load the normal GRUB menu.
+
+
+grub rescue>
+grub rescue>
