@@ -13,12 +13,19 @@ Repeat for all partitions. Look for familiar directories like /boot/grub or /etc
 2. Set the Correct Root and Prefix
 Once you find the correct partition, set it manually:
 
-set root=(hd0,msdosX)   # Replace X with the correct partition number
+grub rescue>set root=(hd0,msdosX)   # Replace X with the correct partition number
 set prefix=(hd0,msdosX)/boot/grub
 insmod normal
 normal
+
 This should load the normal GRUB menu.
 
+3. Boot into the OS and Repair GRUB
+Once you boot successfully, repair GRUB using the following steps:
 
-grub rescue>
-grub rescue>
+Boot into your Linux OS.
+Run this command to reinstall GRUB:
+
+sudo grub-install /dev/sda
+sudo update-grub
+
